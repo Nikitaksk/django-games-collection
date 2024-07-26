@@ -1,0 +1,23 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css";
+
+.tic-tac-toe {
+	display: grid;
+	grid-template-columns: repeat(3, 7rem);
+	grid-template-rows: repeat(3, 7rem);
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.tic-tac-toe button {
+	width: 7rem;
+	height: 7rem;
+	font-size: 2em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+

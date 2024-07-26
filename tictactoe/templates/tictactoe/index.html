@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Tic Tac Toe
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <h1></h1>
+        <div class="container">
+            <h1 class="title has-text-centered">Tic Tac Toe</h1>
+            {% if winner %}
+                <h2 class="has-text-centered">{{ winner }} </h2>
+            {% else %}
+                <h2 class="has-text-centered">Current turn: {{ current_turn }}</h2>
+            {% endif %}
+
+            <form method="post">
+                <div class="tic-tac-toe">
+                    {% csrf_token %}
+                    {% for value in board %}
+                        <button class="button" type="submit" name="index"
+                                value="{{ forloop.counter0 }}">{{ value }}</button>
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
