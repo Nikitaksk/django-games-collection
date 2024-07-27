@@ -17,7 +17,7 @@ class LoginView(View):
             user = authenticate(username = username, password = password)
             if user:
                 login(request, user)
-                return render(request, 'index.html')
+                return redirect('/')
             else:
                 form.add_error(None, 'Invalid username or password')
                 return render(request, 'users/login.html', context={'form': form})
@@ -34,7 +34,7 @@ class RegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return render(request, 'index.html')
+            return redirect('/')
         else:
             return redirect('register')
 
