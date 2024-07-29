@@ -1,0 +1,9 @@
+<form method="post">
+    <div class="tic-tac-toe">
+        {% csrf_token %}
+        {% for value in board %}
+            <button class="button" type="submit" name="index"
+                    value="{{ forloop.counter0 }}">{{ value }}</button>
+        {% endfor %}
+    </div>
+</form>

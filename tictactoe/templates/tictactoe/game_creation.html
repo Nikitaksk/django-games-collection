@@ -1,0 +1,14 @@
+<h2 class="subtitle">
+    Start a new Game
+</h2>
+<form method="post">
+    <div class="select is-link">
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+    </div>
+    {% csrf_token %}
+    <button class="button" type="submit"> Start </button>
+</form>
