@@ -10,24 +10,30 @@
         <div class="container">
             <h1 class="title has-text-centered">Tic Tac Toe</h1>
 
-{#            <div class="columns ">#}
+            {#            <div class="columns ">#}
 
 
-                {% if create_game %}
-                    <div class="box py-5 my-5 has-text-centered">
-                        {% include "tictactoe/game_creation.html" %}
-                    </div>
+            {% if create_game %}
+                <div class="box py-5 my-5 has-text-centered">
+                    {% include "tictactoe/game_creation.html" %}
+                </div>
+
+            {% else %}
+                <a class="button" href="clear/"> New Game</a>
+                {% if winner %}
+                    <h2 class="has-text-centered">{{ winner }}
+                        {% if winner != "Draw" %}
+                            wins!
+                        {% endif %}
+                    </h2>
+
 
                 {% else %}
-                    <a class="button" href="clear/"> New Game</a>
-                    {% if winner %}
-                        <h2 class="has-text-centered">{{ winner }} </h2>
-                    {% else %}
-                        <h2 class="has-text-centered">Current difficulty: {{ difficulty }}</h2>
-                    {% endif %}
-                    {% include "tictactoe/game_board.html" %}
+                    <h2 class="has-text-centered">Current difficulty: {{ difficulty }}</h2>
                 {% endif %}
-{#            </div>#}
+                {% include "tictactoe/game_board.html" %}
+            {% endif %}
+            {#            </div>#}
 
 
         </div>

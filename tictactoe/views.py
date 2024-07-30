@@ -1,6 +1,7 @@
 import random
-
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import View
+
 from .models import unfinished_tictactoe, tictactoe_archive
 
 
@@ -23,6 +24,9 @@ def index(request):
     print(game)
     if request.method == "POST":
         if check_winner(game.board):
+            tictactoe_archive.objects.create(user=request.user, start_time=game.start_time,
+                                             score=(check_winner(game.board) == "X"))
+
             return redirect('clear')
         index_to_place = int(request.POST["index"])
         if game.board[index_to_place] == " ":
