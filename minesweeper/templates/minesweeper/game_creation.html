@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Minesweeper
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 10%">
+        <div class="box m-5">
+            <h1 class="title has-text-centered" > Configure your minesweeper game</h1>
+            <form method="post">
+                {% csrf_token %}
+                <div class="field">
+                    <label class="label">Height of the field</label>
+                    <div class="control">
+                        <input class="input" type="number" name="height" min="5" max="20" value="5"/>
+                    </div>
+                    <p class="help">Set the height of the game board (8 to 20).</p>
+                </div>
+
+                <div class="field">
+                    <label class="label">Width of the field</label>
+                    <div class="control">
+                        <input class="input" type="number" name="width" min="5" max="20" value="5"/>
+                    </div>
+                     <p class="help">Set the width of the game board (8 to 20).</p>
+                </div>
+
+                <div class="field">
+                    <label class="label">Select difficulty:</label>
+                    <div class="control">
+                        <div class="select is-link">
+                            <select name="difficulty">
+                                <option value="22">Hard</option>
+                                <option value="17" selected>Medium</option>
+                                <option value="10">Easy</option>
+                            </select>
+                        </div>
+                    </div>
+                     <p class="help">Choose the difficulty level for the game.</p>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">Start Game</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

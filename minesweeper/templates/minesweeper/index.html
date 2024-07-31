@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Minesweeper
+{% endblock %}
+
+
+{% block content %}
+    <section class="section">
+        <a class="button" href="clear/"> CLEAR!</a>
+        <h1 class="title has-text-centered">Minesweeper</h1>
+        <div class="container has-background-dark has-text-centered">
+            <div class="box has-text-centered m-auto " style="width: fit-content">
+{% for row in cells %}
+                    <form  class = "has-background-light"action="" method="post">
+                        {% csrf_token %}
+                        <div class="columns is-mobile is-gapless" >
+                            {% for cell in row %}
+                                <div class = "column">
+                                    <button class="button" name="index" value="{{ cell.x }},{{ cell.y }}"
+                                        style="width: 3rem; height: 3rem; background:
+                                                {% if cell.is_revealed %}
+                                                    white
+                                                {% else %}
+                                                    black
+                                                {% endif %};
+                                                color: red;">
+                                    <br/>
+                                    {% if cell.is_mine %}
+                                        Mine
+                                    {% else %}
+
+                                    {% endif %}
+                                {{ cell.adjacent_mines }}
+                                </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

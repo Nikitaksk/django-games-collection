@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('tictactoe/', include('tictactoe.urls')),
+    path('minesweeper/', include('minesweeper.urls')),
     path('users/', include('users.urls')),
 
 ]
